@@ -1,0 +1,153 @@
+.assign-modal-container {
+  max-width: 900px;
+  min-height: 520px;
+}
+
+.assign-modal-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.assign-modal-search {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #e1e8ed;
+  border-radius: 10px;
+  background: #f8fafc;
+  margin-bottom: 1rem;
+}
+
+.assign-modal-search i {
+  color: #64748b;
+}
+
+.assign-modal-search input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  color: #1f2937;
+}
+
+.assign-modal-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow-y: auto;
+  padding-right: 0.25rem;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.assign-modal-section {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+}
+
+.assign-modal-container .view-modal-body {
+  min-height: 420px;
+  overflow: hidden;
+}
+
+.assign-modal-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid #e1e8ed;
+  border-radius: 10px;
+  background: #ffffff;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.assign-modal-item:hover {
+  background: #f1f5f9;
+  border-color: #cbd5f5;
+}
+
+.assign-modal-item input {
+  accent-color: #2563eb;
+}
+
+.assign-modal-label {
+  font-size: 0.95rem;
+  color: #1f2937;
+}
+
+.assign-modal-driver {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.assign-modal-vehicle {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  flex: 1;
+}
+
+.assign-modal-meta {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.assign-modal-status {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  text-transform: capitalize;
+}
+
+.assign-status-active {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.assign-status-inactive {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.assign-status-maintenance {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.assign-modal-empty {
+  padding: 1rem;
+  border: 1px dashed #cbd5f5;
+  border-radius: 10px;
+  background: #f8fafc;
+  color: #64748b;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .assign-modal-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .assign-modal-section {
+    height: auto;
+  }
+
+  .assign-modal-list {
+    max-height: 220px;
+  }
+
+  .assign-modal-container .view-modal-body {
+    overflow-y: auto;
+  }
+}

@@ -1,0 +1,289 @@
+
+/* Plate Number Badge Styles */
+.plate-number-badge {
+  display: inline-block;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+  border: 2px solid var(--color-border-secondary);
+}
+
+.passengers-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.proof-photos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}
+
+.proof-photo-card {
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--color-border-secondary);
+  background: var(--color-bg-tertiary);
+  display: flex;
+  flex-direction: column;
+}
+
+.proof-photo-image {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  display: block;
+}
+
+.proof-photo-placeholder {
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 0.85rem;
+  background: var(--color-bg-quaternary);
+}
+
+.proof-photo-meta {
+  padding: 0.5rem 0.65rem;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.passenger-chip {
+  background: var(--color-bg-quaternary);
+  color: var(--color-text-primary);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.no-passengers {
+  color: var(--color-text-muted);
+  font-style: italic;
+}
+
+.routes-view-section {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.routes-view-section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.routes-view-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+}
+
+@media (max-width: 640px) {
+  .routes-view-section-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Table Cell Styles */
+.route-id {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.route-name {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.route-start-location {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.route-end-location {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.route-start-date,
+.route-end-date {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.route-distance {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.route-time {
+  color: var(--color-text-secondary);
+}
+
+.route-start-time {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.route-end-time {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+.route-driver {
+  color: var(--color-text-secondary);
+}
+
+.route-passengers {
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.passenger-names {
+  font-size: 0.9rem;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  display: block;
+  max-width: 250px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Analytics Cards */
+.analytics-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.analytics-card {
+  background: var(--color-bg-primary);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px var(--color-shadow);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.analytics-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--color-text-inverse);
+}
+
+.analytics-card:nth-child(1) .card-icon {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+.analytics-card:nth-child(2) .card-icon {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+}
+
+.analytics-card:nth-child(3) .card-icon {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+}
+
+.analytics-card:nth-child(4) .card-icon {
+  background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+}
+
+.card-content h3 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+  margin: 0;
+  line-height: 1;
+}
+
+.card-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin: 0.25rem 0 0 0;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .analytics-cards {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .analytics-card {
+    padding: 1rem;
+  }
+  
+  .card-icon {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1.5rem;
+  }
+  
+}
+
+@media (max-width: 480px) {
+  .analytics-cards {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
+  
+  .analytics-card {
+    padding: 0.75rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .card-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .card-content h3 {
+    font-size: 1.25rem;
+  }
+  
+  .card-content p {
+    font-size: 0.8rem;
+  }
+  
+}

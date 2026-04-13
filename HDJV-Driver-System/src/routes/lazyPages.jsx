@@ -1,0 +1,15 @@
+import { lazy } from 'react'
+
+export const Dashboard = lazy(() => import('../pages/dashboard/Dashboard'))
+export const Users = lazy(() => import('../pages/users/Users'))
+export const RoutesPage = lazy(() => import('../pages/routes/Routes'))
+export const Accounts = lazy(() => import('../pages/accounts/Accounts'))
+export const Vehicles = lazy(() => import('../pages/vehicles/Vehicles'))
+export const Settings = lazy(() => import('../pages/settings/Settings'))
+export const Reports = lazy(() => import('../pages/reports/Reports'))
+export const Requests = lazy(() => import('../pages/requests/Requests'))
+export const Notifications = lazy(() => import('../pages/notifications/Notifications'))
+export const TimeRecords = lazy(() => import('../pages/timeRecords/TimeRecords'))
+export const TimeRecordsPerDay = lazy(() => import('../pages/timeRecords/TimeRecordsPerDay'))
+export const Login = lazy(() => import('../pages/login/Login'))
+export const NotFound = lazy(() => import('../pages/Notfound/Notfound'))

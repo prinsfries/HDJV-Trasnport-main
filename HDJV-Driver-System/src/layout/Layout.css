@@ -1,0 +1,125 @@
+.app {
+  display: flex;
+  min-height: 100dvh;
+}
+
+.main-content {
+  flex: 1;
+  background: #f5f6fa;
+  min-height: 100dvh;
+  height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.content {
+  padding: 1.5rem 2rem 2rem 2rem;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.content h2 {
+  color: #2c3e50;
+  margin-bottom: 1rem;
+  border-left: 4px solid #27ae60;
+  padding-left: 1rem;
+}
+
+.content p {
+  color: #64748b;
+  line-height: 1.6;
+}
+
+.route-fallback {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 100%;
+}
+
+.route-fallback-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.route-fallback-title {
+  width: 220px;
+  height: 24px;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.route-fallback-subtitle {
+  width: 320px;
+  height: 16px;
+  border-radius: 8px;
+  background: #e5e7eb;
+}
+
+.route-fallback-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.route-fallback-card {
+  height: 110px;
+  border-radius: 14px;
+  background: #e5e7eb;
+}
+
+.route-fallback-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.route-fallback-row {
+  height: 42px;
+  border-radius: 10px;
+  background: #e5e7eb;
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(90deg, rgba(229, 231, 235, 0) 0%, rgba(255, 255, 255, 0.7) 50%, rgba(229, 231, 235, 0) 100%);
+  animation: shimmerMove 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmerMove {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (max-width: 900px) {
+  .route-fallback-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .route-fallback-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .route-fallback-title {
+    width: 180px;
+  }
+
+  .route-fallback-subtitle {
+    width: 240px;
+  }
+}

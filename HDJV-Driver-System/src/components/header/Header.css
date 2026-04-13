@@ -1,0 +1,231 @@
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.25rem 2rem 1rem 2rem;
+  background: #f5f6fa;
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.app-header-left h2 {
+  color: #2c3e50;
+  margin: 0 0 0.25rem 0;
+  border-left: 4px solid #27ae60;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+}
+
+.app-header-left p {
+  color: #475569;
+  margin: 0;
+  margin-left: 1rem;
+  font-size: 0.875rem;
+}
+
+.app-header-right {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.notify-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid #e1e8ed;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  position: relative;
+  color: #334155;
+  transition: all 0.2s ease;
+}
+
+.notify-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.notify-dot {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #ef4444;
+}
+
+.notify-dropdown {
+  position: absolute;
+  top: 48px;
+  right: 0;
+  width: 320px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid #e1e8ed;
+  overflow: hidden;
+  z-index: 100;
+}
+
+.notify-header {
+  padding: 0.75rem 1rem;
+  font-weight: 600;
+  color: #2c3e50;
+  border-bottom: 1px solid #e1e8ed;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.notify-clear {
+  background: none;
+  border: none;
+  color: #27ae60;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.notify-clear:hover:not(:disabled) {
+  opacity: 0.8;
+}
+
+.notify-clear:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Scrollable container for notifications */
+.notify-scroll-container {
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: #e1e8ed #f8fafc;
+}
+
+.notify-scroll-container::-webkit-scrollbar {
+  width: 6px;
+}
+
+.notify-scroll-container::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+
+.notify-scroll-container::-webkit-scrollbar-thumb {
+  background: #e1e8ed;
+  border-radius: 3px;
+}
+
+.notify-scroll-container::-webkit-scrollbar-thumb:hover {
+  background: #cbd5e1;
+}
+
+.notify-item {
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  color: #475569;
+  font-size: 0.875rem;
+  width: 100%;
+  border: none;
+  background: transparent;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.notify-item + .notify-item {
+  border-top: 1px solid #f1f5f9;
+}
+
+.notify-item.unread {
+  background: #f8fafc;
+}
+
+.notify-item:hover:not(:disabled) {
+  background: #f1f5f9;
+}
+
+.notify-item:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.notify-title {
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.notify-time {
+  color: #94a3b8;
+  font-size: 0.75rem;
+  line-height: 1.3;
+}
+
+.notify-empty {
+  padding: 2rem 1rem;
+  color: #94a3b8;
+  font-size: 0.85rem;
+  text-align: center;
+}
+
+/* Loading indicator */
+.notify-loading {
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #94a3b8;
+  font-size: 0.85rem;
+}
+
+.notify-spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #e1e8ed;
+  border-top: 2px solid #27ae60;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* End of notifications indicator */
+.notify-end {
+  padding: 1rem;
+  text-align: center;
+  color: #94a3b8;
+  font-size: 0.75rem;
+  border-top: 1px solid #f1f5f9;
+}
+
+.notify-footer {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid #f1f5f9;
+  text-align: right;
+  background: #f8fafc;
+}
+
+.notify-footer a {
+  color: #27ae60;
+  text-decoration: none;
+  font-size: 0.8rem;
+  transition: opacity 0.2s ease;
+}
+
+.notify-footer a:hover {
+  opacity: 0.8;
+}

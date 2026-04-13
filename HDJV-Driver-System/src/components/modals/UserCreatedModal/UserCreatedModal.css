@@ -1,0 +1,126 @@
+.user-created-modal {
+  max-width: 450px;
+}
+
+.user-created-modal .modal-content {
+  padding: 1.5rem;
+  text-align: center;
+  max-height: none;
+  overflow: visible;
+}
+
+.user-created-modal .modal-content .success-icon {
+  font-size: 2.5rem;
+  color: #28a745;
+  margin-bottom: 0.75rem;
+}
+
+.user-created-modal .modal-content .user-info {
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+.user-created-modal .modal-content .user-info h4 {
+  margin: 0 0 0.25rem 0;
+  color: #2c3e50;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.user-created-modal .modal-content .user-info .user-role {
+  margin: 0;
+  color: #6c757d;
+  font-size: 0.85rem;
+  text-transform: capitalize;
+}
+
+.user-created-modal .modal-content .credentials-container {
+  margin-top: 1rem;
+  text-align: left;
+}
+
+.user-created-modal .modal-content .credentials-container h5 {
+  margin: 0 0 0.75rem 0;
+  color: #2c3e50;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: center;
+}
+
+.user-created-modal .modal-content .credential-item {
+  margin-bottom: 0.75rem;
+}
+
+.user-created-modal .modal-content .credential-item label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: #495057;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+
+.user-created-modal .modal-content .credential-value {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.user-created-modal .modal-content .credential-value .credential-input {
+  flex: 1;
+  padding: 0.5rem;
+  border: 2px solid #e1e8ed;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  background: #f8f9fa;
+  color: #495057;
+  font-family: 'Courier New', monospace;
+}
+
+.user-created-modal .modal-content .credential-value .copy-btn {
+  padding: 0.5rem;
+  background: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user-created-modal .modal-content .credential-value .copy-btn:hover {
+  background: #5a6268;
+  transform: translateY(-1px);
+}
+
+.user-created-modal .modal-actions {
+  margin-top: 1.5rem;
+  justify-content: center;
+  padding-top: 1rem;
+  border-top: 1px solid #e1e8ed;
+}
+
+.user-created-modal .modal-actions .btn {
+  padding: 0.5rem 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 640px) {
+  .user-created-modal {
+    max-width: 95%;
+  }
+  
+  .user-created-modal .modal-content {
+    padding: 1.5rem;
+  }
+  
+  .credential-value {
+    align-items: stretch;
+  }
+  
+  .copy-btn {
+    padding: 0.5rem;
+  }
+}

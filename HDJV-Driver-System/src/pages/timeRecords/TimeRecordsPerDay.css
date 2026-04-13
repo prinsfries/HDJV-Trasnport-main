@@ -1,0 +1,149 @@
+.time-records-actions {
+  align-items: center;
+}
+
+.time-records-summary {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.time-records-summary > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.summary-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.summary-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--color-text-primary);
+}
+
+.time-records-buttons {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.time-records-toggle {
+  display: flex;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.time-records-toggle .toggle-btn {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  min-width: 120px;
+}
+
+.time-records-toggle .toggle-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.time-records-toggle .toggle-btn.active {
+  background: #1f7a4a;
+  color: #ffffff;
+  box-shadow: 0 1px 2px var(--color-shadow-light);
+}
+
+.active-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.2rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.active-badge.is-active {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.active-badge.is-inactive {
+  background: var(--color-badge-gray-bg);
+  color: var(--color-badge-gray-text);
+}
+
+.time-records-table .hours-cell {
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+
+.time-records-table .time-input {
+  width: 120px;
+  min-width: 110px;
+  max-width: 140px;
+  padding: 0.45rem 0.6rem;
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 6px;
+  font-size: 0.85rem;
+  background: #ffffff;
+}
+
+.time-records-table .time-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.12);
+}
+
+.time-records-table-wrapper {
+  min-height: 400px;
+}
+
+.time-records-footer {
+  min-height: 40px;
+}
+
+.time-records-table tbody tr {
+  height: 48px;
+}
+
+.time-records-table .actions-cell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Driver and Contact Column Styling */
+.time-records-table td:first-child {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.time-records-table td:nth-child(2) {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
+  .time-records-table .time-input {
+    min-width: 110px;
+  }
+}

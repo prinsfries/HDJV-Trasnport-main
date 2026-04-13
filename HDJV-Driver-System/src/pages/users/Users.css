@@ -1,0 +1,159 @@
+/* Users Page Styles */
+/* Table Cell Styles */
+.user-id {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.user-name {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.user-avatar-small {
+  min-width: 32px;
+  min-height: 32px;
+  background: linear-gradient(135deg, #3498db, var(--color-primary));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-inverse);
+  font-size: 0.875rem;
+}
+
+.user-email {
+  color: var(--color-text-secondary);
+}
+
+.user-contact {
+  color: var(--color-text-secondary);
+}
+
+.join-date {
+  color: var(--color-text-secondary);
+  font-size: 0.9rem;
+}
+
+.role-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.role-badge.driver {
+  background: var(--color-badge-blue-bg);
+  color: var(--color-badge-blue-text);
+}
+
+.role-badge.passenger {
+  background: var(--color-badge-green-bg);
+  color: var(--color-badge-green-text);
+}
+
+.role-badge.krpassenger {
+  background: var(--color-badge-yellow-bg);
+  color: var(--color-badge-yellow-text);
+}
+
+/* User Type Toggle */
+.user-type-toggle {
+  display: flex;
+  background: var(--color-bg-tertiary);
+  border: 1px solid var(--color-border-primary);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.user-type-toggle .toggle-btn {
+  flex: 1;
+  padding: 0.5rem 1rem;
+  border: none;
+  background: transparent;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.user-type-toggle .toggle-btn:hover {
+  color: var(--color-text-primary);
+}
+
+.user-type-toggle .toggle-btn.active {
+  background: #1f7a4a;
+  color: #ffffff;
+  box-shadow: 0 1px 2px var(--color-shadow-light);
+}
+
+.vehicle-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.vehicle-badge.bg-blue-100 {
+  background: var(--color-badge-blue-bg);
+  color: var(--color-badge-blue-text);
+}
+
+.vehicle-badge.bg-purple-100 {
+  background: var(--color-badge-purple-bg);
+  color: var(--color-badge-purple-text);
+}
+
+.vehicle-badge.bg-orange-100 {
+  background: var(--color-badge-orange-bg);
+  color: var(--color-badge-orange-text);
+}
+
+.vehicle-badge.bg-indigo-100 {
+  background: var(--color-badge-indigo-bg);
+  color: var(--color-badge-indigo-text);
+}
+
+/* Coupon Usage Display */
+.user-coupon-usage {
+  color: var(--color-text-secondary);
+  font-weight: 400;
+  font-size: 0.9rem;
+}
+
+.users-view-section {
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 12px 14px;
+  background: var(--color-background);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.users-view-section-title {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  color: var(--color-text-secondary);
+  font-weight: 600;
+}
+
+.users-view-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem 1rem;
+}
+
+@media (max-width: 640px) {
+  .users-view-section-grid {
+    grid-template-columns: 1fr;
+  }
+}

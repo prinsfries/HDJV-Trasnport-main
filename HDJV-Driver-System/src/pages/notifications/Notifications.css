@@ -1,0 +1,11 @@
+.notif-unread {
+  background: #f8fafc;
+}
+
+.data-table td {
+  color: #1f2933;
+}
+
+.data-table td .muted-text {
+  color: #6b7280;
+}

@@ -1,0 +1,132 @@
+/* Accounts Page Styles */
+/* Table Cell Styles */
+.account-id {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.account-username {
+  color: var(--color-text-primary);
+  font-weight: 500;
+}
+
+.account-password {
+  color: var(--color-text-secondary);
+}
+
+.password-field {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.account-password-input {
+  padding: 0.5rem 2.5rem 0.5rem 0.75rem;
+  border: 1px solid var(--color-border-secondary);
+  border-radius: 6px;
+  font-size: 0.875rem;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-secondary);
+  width: 150px;
+  font-family: monospace;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.password-toggle-btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  font-size: 14px;
+}
+
+.password-toggle-btn:hover {
+  background: var(--color-bg-quaternary);
+  color: var(--color-primary);
+}
+
+.account-status {
+  color: var(--color-text-secondary);
+}
+
+.status-badge.active {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.status-badge.inactive {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+.approve-btn {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.approve-btn:hover {
+  background: #88c7a0;
+}
+
+.activate-btn {
+  background: var(--color-activate-bg);
+  color: var(--color-activate-text);
+}
+
+.activate-btn:hover {
+  background: var(--color-activate-hover-bg);
+}
+
+.deactivate-btn {
+  background: var(--color-deactivate-bg);
+  color: var(--color-deactivate-text);
+}
+
+.deactivate-btn:hover {
+  background: var(--color-deactivate-hover-bg);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .password-field {
+    min-width: 150px;
+    width: 100%;
+    max-width: 200px;
+  }
+  
+  .account-password-input {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .password-field {
+    min-width: 100px;
+    max-width: 150px;
+  }
+  
+  .account-password-input {
+    font-size: 0.8rem;
+    padding: 0.4rem 2.2rem 0.4rem 0.6rem;
+  }
+  
+  .password-toggle-btn {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+}

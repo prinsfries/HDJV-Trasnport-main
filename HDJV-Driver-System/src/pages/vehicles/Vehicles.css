@@ -1,0 +1,81 @@
+/* Vehicles Page Styles */
+/* Vehicle ID */
+.vehicle-id-badge {
+  display: inline-block;
+  background: #e7eef6;
+  color: var(--color-text-primary);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+}
+
+.vehicle-brand,
+.vehicle-model {
+  color: var(--color-text-secondary);
+  font-weight: 500;
+}
+
+/* Vehicle Type */
+.vehicle-type-badge {
+  display: inline-block;
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 0.875rem;
+}
+
+.type-sedan {
+  background: var(--color-badge-blue-bg);
+  color: var(--color-badge-blue-text);
+}
+
+.type-suv {
+  background: var(--color-badge-purple-bg);
+  color: var(--color-badge-purple-text);
+}
+
+.type-truck {
+  background: var(--color-badge-orange-bg);
+  color: var(--color-badge-orange-text);
+}
+
+.type-van {
+  background: var(--color-badge-indigo-bg);
+  color: var(--color-badge-indigo-text);
+}
+
+.type-default {
+  background: var(--color-badge-gray-bg);
+  color: var(--color-badge-gray-text);
+}
+
+/* Plate Number */
+.plate-number-text {
+  display: inline-block;
+  background: var(--color-bg-tertiary);
+  color: var(--color-text-primary);
+  padding: 0.375rem 0.75rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+  border: 2px solid var(--color-border-secondary);
+}
+
+/* Status */
+.status-active {
+  background: var(--color-success-bg);
+  color: var(--color-success-text);
+}
+
+.status-inactive {
+  background: var(--color-error-bg);
+  color: var(--color-error-text);
+}
+
+.status-maintenance {
+  background: var(--color-warning-bg);
+  color: var(--color-warning-text);
+}
