@@ -68,6 +68,8 @@ class TimeRecordSeeder extends Seeder
             return;
         }
 
-        TimeRecord::insert($records);
+        foreach (array_chunk($records, 50) as $chunk) {
+        TimeRecord::insert($chunk);
+        }
     }
 }

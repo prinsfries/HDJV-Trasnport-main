@@ -1,12 +1,11 @@
 // Firebase configuration for HDJV Transportation System
 const firebaseConfig = {
-  apiKey: "AIzaSyDq4OLuSOW-tMuFQwoMQzLlS8BIQOlvSvM",
-  authDomain: "hdjv-transpo.firebaseapp.com",
-  projectId: "hdjv-transpo",
-  storageBucket: "hdjv-transpo.firebasestorage.app",
-  messagingSenderId: "484818955540",
-  appId: "1:484818955540:web:4cf69128b530b6e2b22601",
-  measurementId: "G-VXXVNB8SFT"
+  apiKey: "AIzaSyCyks6CXK6CG07RrnvBGqZhFzuSgUkYarA",
+  authDomain: "hdjv-transport-dev.firebaseapp.com",
+  projectId: "hdjv-transport-dev",
+  storageBucket: "hdjv-transport-dev.firebasestorage.app",
+  messagingSenderId: "489848575511",
+  appId: "1:489848575511:web:819f6c83655e97e212ae52"
 };
 
 export default firebaseConfig;
