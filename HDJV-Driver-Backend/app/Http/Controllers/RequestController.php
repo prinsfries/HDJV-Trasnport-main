@@ -287,7 +287,7 @@ class RequestController extends Controller
                 ->where('used_coupon', true)
                 ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
                 ->count();
-            if ($usedCount >= 3) {
+            if ($usedCount >= 4) {
                 return response()->json(['message' => 'Monthly coupon limit reached.'], 422);
             }
         }

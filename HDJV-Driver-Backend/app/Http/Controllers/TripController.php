@@ -189,6 +189,31 @@ class TripController extends Controller
             Arr::except($data, ['trip_id'])
         );
 
+        // --- NEW: COUPON REFUND LOGIC ---
+        // Only run this if the trip just finished and has both start and end times
+        if ($trip->status === 'completed' && $trip->started_at && $trip->completed_at) {
+            
+            $startTime = \Carbon\Carbon::parse($trip->started_at);
+            $endTime = \Carbon\Carbon::parse($trip->completed_at);
+            
+            // Calculate total hours
+            $hoursOutside = $startTime->diffInHours($endTime);
+
+            // If less than 8 hours, refund the coupon
+            if ($hoursOutside < 8) {
+                // Find the request attached to this trip that used a coupon,
+                // and set 'used_coupon' back to false (refunding it).
+                $rideRequest = \App\Models\RideRequest::where('trip_id', $trip->trip_id)
+                    ->where('used_coupon', true)
+                    ->first();
+
+                if ($rideRequest) {
+                    $rideRequest->update(['used_coupon' => false]);
+                }
+            }
+        }
+        // --- END COUPON LOGIC ---
+
         return response()->json($trip->load('proofPhotos'));
     }
 
