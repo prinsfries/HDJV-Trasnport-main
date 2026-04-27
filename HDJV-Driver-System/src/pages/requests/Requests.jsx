@@ -39,7 +39,7 @@ const Requests = () => {
   const [requestedTo, setRequestedTo] = useState('')
   const [debouncedRequestedFrom, setDebouncedRequestedFrom] = useState('')
   const [debouncedRequestedTo, setDebouncedRequestedTo] = useState('')
-  const [sortConfig, setSortConfig] = useState({ key: 'requested_at', direction: 'desc' })
+  const [sortConfig, setSortConfig] = useState({ key: 'id', direction: 'desc' })
   const [totalCount, setTotalCount] = useState(0)
   const [hasTotal, setHasTotal] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
