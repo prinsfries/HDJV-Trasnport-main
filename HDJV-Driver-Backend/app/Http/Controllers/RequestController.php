@@ -285,10 +285,18 @@ class RequestController extends Controller
             $endOfMonth = Carbon::now()->endOfMonth();
             $usedCount = RideRequest::where('requester_id', $user->id)
                 ->where('used_coupon', true)
+                ->where('status', '!=', 'rejected')
                 ->whereBetween('created_at', [$startOfMonth, $endOfMonth])
                 ->count();
-            if ($usedCount >= 4) {
-                return response()->json(['message' => 'Monthly coupon limit reached.'], 422);
+
+            $limit = (int) config('coupons.kr_passenger_monthly_limit', 4);
+            $couponLeft = max($limit - $usedCount, 0);
+
+            if ($couponLeft <= 0) {
+                return response()->json([
+                    'message' => 'Monthly coupon limit reached.',
+                    'coupon_left' => $couponLeft,
+                ], 422);
             }
         }
 
