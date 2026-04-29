@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { assignRequest, decideRequest, fetchRequestById, fetchRequests, fetchRequestsAll, fetchUsersAll, fetchVehiclesAll, fetchTimeRecordsPerDay } from '../../utils/api/index.js'
-import { formatDateTime, formatLocalDate, formatDate, formatTime, toUtcEndOfLocalDate, toUtcStartOfLocalDate } from '../../utils/dateUtils'
+import { assignRequest, decideRequest, fetchRequestById, fetchRequests, fetchRequestsAll, fetchUsersAll, fetchVehiclesAll } from '../../utils/api/index.js'
+import { formatDateTime, formatDate, formatTime, toUtcEndOfLocalDate, toUtcStartOfLocalDate } from '../../utils/dateUtils'
 import { useToast } from '../../components/Toast/ToastContext'
 import { useSearchParams } from 'react-router'
 import DeleteConfirmModal from '../../components/modals/DeleteConfirmationModal/DeleteConfirmModal'
@@ -27,7 +27,6 @@ const Requests = () => {
   const [backendHasMore, setBackendHasMore] = useState(true)
   const [drivers, setDrivers] = useState([])
   const [vehicles, setVehicles] = useState([])
-  const [activeDriverIds, setActiveDriverIds] = useState(new Set())
   const [isAssignLoading, setIsAssignLoading] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [errorMessage, setErrorMessage] = useState('')
@@ -464,47 +463,16 @@ const Requests = () => {
     if (!isAssignModalOpen) return
     if (drivers.length > 0 && vehicles.length > 0) return
     let isMounted = true
-    const loadActiveDrivers = async (activeDate) => {
-      const maxPages = 50
-      const nextActive = new Set()
-      let page = 1
-      let totalPages = maxPages
-      while (page <= totalPages && page <= maxPages) {
-        const data = await fetchTimeRecordsPerDay(activeDate, {
-          page,
-          pageSize: backendPageSize,
-        })
-        const items = Array.isArray(data) ? data : data.items || []
-        items.forEach((item) => {
-          const driverId = item?.driver?.id ?? item?.driver_id
-          const record = item?.record || {}
-          const hasActivity = !!(record.regular_in || record.regular_out || record.ot_in || record.ot_out)
-          if (driverId && hasActivity) {
-            nextActive.add(String(driverId))
-          }
-        })
-        if (typeof data.total === 'number') {
-          totalPages = Math.ceil(data.total / backendPageSize)
-        } else if (items.length < backendPageSize) {
-          break
-        }
-        page += 1
-      }
-      return nextActive
-    }
     const loadAssignData = async () => {
       setIsAssignLoading(true)
       try {
-        const activeDate = formatLocalDate(new Date())
-        const [users, vehiclesData, activeIds] = await Promise.all([
+        const [users, vehiclesData] = await Promise.all([
           fetchUsersAll('', { role: 'driver' }),
           fetchVehiclesAll(),
-          loadActiveDrivers(activeDate),
         ])
         if (!isMounted) return
         setDrivers(Array.isArray(users) ? users : [])
         setVehicles(Array.isArray(vehiclesData) ? vehiclesData : [])
-        setActiveDriverIds(activeIds || new Set())
       } catch (error) {
         if (!isMounted) return
         console.error('Failed to load assign data', error)
@@ -517,7 +485,7 @@ const Requests = () => {
     return () => {
       isMounted = false
     }
-  }, [isAssignModalOpen, drivers.length, vehicles.length, showError, backendPageSize])
+  }, [isAssignModalOpen, drivers.length, vehicles.length, showError])
 
   return (
     <>
@@ -757,7 +725,6 @@ const Requests = () => {
         isLoading={isAssignLoading}
         drivers={drivers}
         vehicles={vehicles}
-        activeDriverIds={activeDriverIds}
         requestLabel={assignTarget ? `#${assignTarget.id}` : ''}
       />
 

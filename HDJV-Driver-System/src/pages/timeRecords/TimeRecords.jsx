@@ -41,10 +41,16 @@ const formatHours = (hours) => {
 }
 
 const getDayLabel = (date) => {
-  if (!date) return '--'
-  const parsed = new Date(`${date}T00:00:00`)
-  if (Number.isNaN(parsed.getTime())) return '--'
-  return parsed.toLocaleDateString('en-US', { weekday: 'long' })
+  if (!date) return '--';
+  
+  const parsed = new Date(`${date}T00:00:00`);
+  
+  if (Number.isNaN(parsed.getTime())) return '--';
+  
+  return parsed.toLocaleDateString('en-PH', { 
+    timeZone: 'Asia/Manila', 
+    weekday: 'long' 
+  });
 }
 
 const normalizeDate = (value) => {

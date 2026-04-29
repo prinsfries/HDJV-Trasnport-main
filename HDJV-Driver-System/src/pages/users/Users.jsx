@@ -78,7 +78,7 @@ const Users = () => {
     const normalized = normalizeRole(role)
     if (normalized !== 'krpassenger') return '--'
     const used = typeof user?.coupon_used_count === 'number' ? user.coupon_used_count : 0
-    return `${used}/3`
+    return `${used}/4`
   }, [normalizeRole])
 
   const buildParamsString = (nextSearch, nextView, nextYear) => {

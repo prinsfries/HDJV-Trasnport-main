@@ -48,6 +48,7 @@ class UserController extends Controller
             $query->withCount([
                 'rideRequests as coupon_used_count' => function ($q) use ($startOfMonth, $endOfMonth) {
                     $q->where('used_coupon', true)
+                        ->where('status', '!=', 'rejected')
                         ->whereBetween('created_at', [$startOfMonth, $endOfMonth]);
                 },
             ]);

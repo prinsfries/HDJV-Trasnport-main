@@ -1,0 +1,85 @@
+HDJV Transport System - Master Setup & Handover Guide
+
+This guide contains the step-by-step instructions to restore and activate the HDJV Transport System across the Backend, Web Dashboard, and Mobile App.
+
+--------------------------------------------------------------------------------
+
+PHASE 1: Restore Secret Files & Environment
+secret files (.env and json files)
+- https://drive.google.com/file/d/1h2paBRQcTd4hzYNIju0R4CLGfiljGpEm/view?usp=drive_link
+
+1. Backend Restoration & Database Config
+   - Path: HDJV-Driver-Backend\
+   - Move your .env file into this folder.
+   - Move firebase-service-account.json into the storage\app\ folder.
+   - Force MySQL Connection: Open config/database.php and update the default connection at the top of the file to this:
+     'default' => env('DB_CONNECTION', 'mysql'),
+
+2. Web Dashboard Restoration
+   - Path: HDJV-Driver-System\
+   - Move your .env file into this folder.
+   - Note: Ensure src/config/firebase.js contains the correct web configuration.
+
+3. Mobile App Restoration
+   - Path: HDJV-Driving-App\
+   - Move your .env file into this folder.
+   - Move google-services.json into the main folder.
+   - Note: Ensure config/firebase.js has your mobile web config.
+
+4. PHP & Extension Configuration (Critical)
+   The backend requires PHP 8.5+. You must configure the php.ini file located at:
+   C:\Users\HDEC\AppData\Local\Programs\PHP\current\php.ini
+
+   Step-by-Step Fixes:
+   a. Enable Extensions: Remove the semicolon (;) from the start of these lines:
+      - extension=fileinfo
+      - extension=sodium
+      - extension=pdo_mysql
+      - extension=mysqli
+      - extension=pdo_sqlite
+      - extension=sqlite3
+   b. Path Correction: Windows may fail to find drivers even if enabled. You must set the absolute path for the extension directory. Search for extension_dir in the file and change it to:
+      extension_dir = "C:\Users\HDEC\AppData\Local\Programs\PHP\current\ext"
+   c. Save the file and restart your terminal.
+
+--------------------------------------------------------------------------------
+
+PHASE 2: The "Activation" Commands
+
+Note: change IP Address in .env HDJV-Driver-Backend, HDJV-Driver-System, and HDJV-Driving-App
+
+
+Step 1: The Backend (Terminal 1)
+1. Open CMD (Run as Administrator) in HDJV-Driver-Backend.
+2. Install Dependencies: 
+   composer install
+3. Clear Cache (Crucial for IP & Database changes): 
+   php artisan config:clear
+4. Build Database (Ensure MySQL is running in XAMPP): 
+   php artisan migrate:fresh --seed
+5. Start Server: 
+   php artisan serve --host=0.0.0.0 --port=8000
+
+Step 2: The Web Dashboard (Terminal 2)
+1. Open CMD in HDJV-Driver-System.
+2. Install Dependencies: 
+   npm install
+3. Start Web Dashboard: 
+   npm run dev
+
+Step 3: The Mobile App (Terminal 3)
+1. Open CMD in HDJV-Driving-App.
+2. Install Dependencies: 
+   npm install
+3. Update Network IP: Type ipconfig in a standard CMD window. Find your IPv4 Address and update the EXPO_PUBLIC_API_URL in your .env file to match the laptop's current Wi-Fi IP address.
+4. Launch Expo (Choose one based on your testing method):
+   - Standard Start: npx expo start -c (Select "Proceed anonymously" if prompted)
+   - Android Studio Emulator: npx expo start --go -c
+   - Physical Device (Custom APK): npx expo start --dev-client -c
+
+--------------------------------------------------------------------------------
+
+Key Project Details
+- Database: MySQL (XAMPP) / Port 3306
+- Storage: Cloudinary (Photos) & Firebase (Real-time tracking)
+- Networking Note: The laptop running the backend and the mobile device running the app must be connected to the exact same Wi-Fi network for the system to synchronize.

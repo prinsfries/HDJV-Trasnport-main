@@ -77,6 +77,39 @@
   accent-color: #2563eb;
 }
 
+.assign-modal-item--disabled {
+  background: #f8fafc;
+  border-color: #e5e7eb;
+  color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.78;
+}
+
+.assign-modal-item--disabled:hover {
+  background: #f8fafc;
+  border-color: #e5e7eb;
+}
+
+.assign-modal-item--disabled .assign-modal-label,
+.assign-modal-item--disabled .assign-modal-meta,
+.assign-modal-item--disabled .assign-modal-status {
+  color: #94a3b8;
+}
+
+.assign-modal-item--disabled .assign-modal-status {
+  background: #e5e7eb;
+}
+
+.assign-modal-item--disabled .assign-status-maintenance,
+.assign-modal-item--disabled .assign-status-inactive {
+  background: #e5e7eb;
+  color: #64748b;
+}
+
+.assign-modal-item--disabled input {
+  cursor: not-allowed;
+}
+
 .assign-modal-label {
   font-size: 0.95rem;
   color: #1f2937;
