@@ -55,6 +55,7 @@ const Requests = () => {
   const [searchParams, setSearchParams] = useSearchParams()
   const hasInitializedFromUrl = useRef(false)
   const lastSetParamsRef = useRef('')
+  const silentRefreshInFlightRef = useRef(false)
 
   usePageHeader(t('pages.requestsManagement'))
 
@@ -221,6 +222,59 @@ const Requests = () => {
     couponFilter,
     debouncedRequestedFrom,
     debouncedRequestedTo
+  ])
+
+  useEffect(() => {
+    const refreshFirstPageSilently = async () => {
+      if (silentRefreshInFlightRef.current) return
+      if (isLoading || isLoadingMore) return
+      if (backendPage > 1) return
+      if (typeof document !== 'undefined' && document.hidden) return
+
+      silentRefreshInFlightRef.current = true
+      try {
+        const filterParams = {
+          ...(statusFilter !== 'all' ? { status: statusFilter } : {}),
+          ...(couponFilter !== 'all' ? { coupon: couponFilter } : {}),
+          ...(debouncedRequestedFrom ? { requested_from: toUtcStartOfLocalDate(debouncedRequestedFrom) } : {}),
+          ...(debouncedRequestedTo ? { requested_to: toUtcEndOfLocalDate(debouncedRequestedTo) } : {}),
+        }
+        const reqs = await fetchRequests(1, backendPageSize, debouncedSearchTerm, sortConfig, filterParams)
+        const incoming = Array.isArray(reqs) ? reqs : reqs.items || []
+        setRequests(incoming)
+
+        const hasTotalResponse = typeof reqs.total === 'number'
+        const firstPageCount = incoming.length
+        const total = hasTotalResponse ? reqs.total : firstPageCount
+        const pageIsFull = firstPageCount === backendPageSize
+
+        setHasTotal(hasTotalResponse)
+        setTotalCount(hasTotalResponse ? reqs.total : firstPageCount)
+        setBackendHasMore(hasTotalResponse ? firstPageCount < total : pageIsFull)
+        setErrorMessage('')
+      } catch (err) {
+        console.error('Background refresh failed:', err)
+      } finally {
+        silentRefreshInFlightRef.current = false
+      }
+    }
+
+    const intervalId = setInterval(() => {
+      refreshFirstPageSilently()
+    }, 1000)
+
+    return () => clearInterval(intervalId)
+  }, [
+    isLoading,
+    isLoadingMore,
+    backendPage,
+    statusFilter,
+    couponFilter,
+    debouncedRequestedFrom,
+    debouncedRequestedTo,
+    backendPageSize,
+    debouncedSearchTerm,
+    sortConfig,
   ])
 
   const filteredRequests = useMemo(() => {

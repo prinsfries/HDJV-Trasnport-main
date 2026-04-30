@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from 'react'
+import React, { useState, useMemo, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router'
 import { fetchDashboardSummary, fetchApprovalSla } from '../../utils/api/index.js'
 import { usePageHeader } from '../../components/header/useHeader'
@@ -25,6 +25,7 @@ const Dashboard = () => {
     slaMinutes: 1440
   })
   const [loading, setLoading] = useState(true)
+  const refreshInFlightRef = useRef(false)
   const currentUser = useMemo(() => {
     try {
       return JSON.parse(localStorage.getItem('user') || '{}')
@@ -38,13 +39,13 @@ const Dashboard = () => {
 
   usePageHeader(t('pages.dashboardOverview'))
 
-  useEffect(() => {
-    loadDashboardData()
-  }, [])
-
-  const loadDashboardData = async () => {
+  const loadDashboardData = async ({ silent = false } = {}) => {
+    if (refreshInFlightRef.current) return
+    refreshInFlightRef.current = true
     try {
-      setLoading(true)
+      if (!silent) {
+        setLoading(true)
+      }
       const [summary, sla] = await Promise.all([
         fetchDashboardSummary(),
         fetchApprovalSla({ days: 30, sla_minutes: 1440 })
@@ -68,9 +69,34 @@ const Dashboard = () => {
     } catch (error) {
       console.error('Failed to load dashboard data:', error)
     } finally {
-      setLoading(false)
+      if (!silent) {
+        setLoading(false)
+      }
+      refreshInFlightRef.current = false
     }
   }
+
+  useEffect(() => {
+    let isActive = true
+
+    const runInitialLoad = async () => {
+      if (!isActive) return
+      await loadDashboardData()
+    }
+
+    runInitialLoad()
+
+    const intervalId = setInterval(() => {
+      if (!isActive) return
+      if (typeof document !== 'undefined' && document.hidden) return
+      loadDashboardData({ silent: true })
+    }, 1000)
+
+    return () => {
+      isActive = false
+      clearInterval(intervalId)
+    }
+  }, [])
 
   const handleAddDriver = () => navigate('/users', { state: { openModal: true } })
   const handleAddVehicle = () => navigate('/vehicles', { state: { openModal: true } })
